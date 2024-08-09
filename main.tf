@@ -5,7 +5,7 @@ locals {
 }
 
 module "kapsule" {
-  source = "./module/kapsule"
+  source       = "./module/kapsule"
   cluster_name = local.cluster_name
 }
 

@@ -1,3 +1,3 @@
-zone                           = "fr-par-1"
-region                         = "fr-par"
-env                            = "prod"
+zone   = "fr-par-1"
+region = "fr-par"
+env    = "prod"
