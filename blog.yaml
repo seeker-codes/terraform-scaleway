@@ -1,0 +1,63 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: blog-01
+  labels:
+    name: blog-01
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: blog
+  namespace: blog-01
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 5000
+  selector:
+    app: blog-dev
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: blog 
+  namespace: blog-01
+spec:
+  replicas: 6
+  selector:
+    matchLabels:
+      app: blog-dev
+  template:
+    metadata:
+      labels:
+        app: blog-dev
+    spec:
+      containers:
+        - name: blog
+          image: rg.fr-par.scw.cloud/staircaze-registry/blog-dev:latest
+          imagePullPolicy: Always
+          #command: ["/bin/sh"]
+          #args: ["-c", "bundle exec rails && bundle exec db:setup && bundle exec puma"]
+          #command: ["/usr/local/bundle/bin/bundle"]
+          #args: ["exec", "puma"]
+          #args: ["exec", "rails", "db:setup"]
+          command: ["/bin/sh", "-c"]
+          args:
+          - bundle exec rails db:setup;
+            sleep 60;
+            bundle exec puma;
+          ports:
+            - containerPort: 5000
+          env:
+            - name: RACK_ENV
+              value: development
+            - name: RAILS_ENV
+              value: development
+            - name: RAILS_HOST
+              value: 51.159.9.23:5000
+            - name: REDIS_URL
+              value: rediss://frankie:%5Dme6%2A%29%5E8%2B2%2F5G%233VvaHd@51.15.236.63:6379
+            - name: REDIS_DISABLE_SSL
+              value : enable
+            - name: DATABASE_URL
+              value: postgresql://frankie:BSh_._N%26~H%3A%29YY3@51.159.24.60:25164

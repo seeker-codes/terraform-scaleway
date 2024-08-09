@@ -1,0 +1,29 @@
+tree
+├── README.md
+├── backend.tf
+├── main.tf
+├── module
+│ ├── database
+│ │ ├── main.tf
+│ │ ├── outputs.tf
+│ │ ├── provider.tf
+│ │ └── variables.tf
+│ ├── instance
+│ │ ├── main.tf
+│ │ ├── outputs.tf
+│ │ ├── provider.tf
+│ │ └── variables.tf
+│ ├── kapsule
+│ │ ├── main.tf
+│ │ ├── outputs.tf
+│ │ ├── provider.tf
+│ │ └── variables.tf
+│ │ 
+│ └── vpc
+│     ├── main.tf
+│     ├── outputs.tf
+│     ├── provider.tf
+│     └── variables.tf
+├── provider.tf
+├── terraform.tfvars
+└── variables.tf
