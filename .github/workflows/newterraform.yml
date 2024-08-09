@@ -4,13 +4,9 @@ on:
   push:
     branches:
     - main
-    paths:
-    - terraform/**
   pull_request:
     branches:
     - main
-  paths:
-    - terraform/**
 
 env:
  # verbosity setting for Terraform logs
@@ -29,7 +25,6 @@ jobs:
     run:
     shell: bash
     # We keep Terraform files in the terraform directory.
-    working-directory: ./terraform
 
   steps:
     - name: Checkout the repository to the runner
